@@ -1,0 +1,3 @@
+LDI R20, 5
+LDI R21, 8
+SUB R20, R21

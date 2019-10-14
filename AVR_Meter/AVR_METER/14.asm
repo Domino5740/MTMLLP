@@ -1,0 +1,8 @@
+LDI R20, 2
+Loop:
+		LDI R21, 100
+		Loop2:	DEC R21
+				NOP
+		BRNE Loop2
+		DEC R20
+BRNE Loop

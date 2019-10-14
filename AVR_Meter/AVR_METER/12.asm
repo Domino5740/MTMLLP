@@ -1,0 +1,3 @@
+LDI R20, 5
+Minus: DEC R20
+BRNE Minus

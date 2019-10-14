@@ -1,0 +1,6 @@
+NOP
+NOP
+RJMP 4
+NOP
+NOP
+NOP

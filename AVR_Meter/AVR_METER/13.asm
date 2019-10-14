@@ -1,0 +1,12 @@
+LDI R20, 10
+NOP
+NOP
+NOP
+NOP
+NOP
+Minus:  DEC R20
+		NOP
+		NOP
+BRNE Minus
+RJMP 0
+// Cycles: R20 * 3
