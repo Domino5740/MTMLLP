@@ -1,10 +1,10 @@
 
-AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm Wed Oct 09 12:15:36 2019
+AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm Sun Oct 27 16:18:39 2019
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn2313def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn2313def.inc'
                                  
-                                 LDI R22, 8
+                                 .MACRO LOAD_CONST
                                  
                                  ;***** Created: 2011-02-09 12:04 ******* Source: ATtiny2313.xml **********
                                  ;*************************************************************************
@@ -665,22 +665,100 @@ AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17
                                  #endif  /* _TN2313DEF_INC_ */
                                  
                                  ; ***** END OF FILE ******************************************************
-000000 e068                      
-                                 Loop3:
-000001 e04b                      	LDI R20,11
-                                 	Loop:
-000002 e951                      			LDI R21, 145
-000003 955a                      			Loop2:	DEC R21
-000004 0000                      					NOP
-000005 0000                      					NOP
-000006 f7e1                      			BRNE Loop2
-000007 954a                      			DEC R20
-000008 f7c9                      	BRNE Loop
-000009 956a                      	DEC R22
-00000a f7b1                      BRNE Loop3
-00000b 0000                      NOP
+                                 
+                                 	LDI @0, LOW(@2)
+                                 	LDI @1, HIGH(@2)
+                                 .ENDMACRO
+                                 
+                                 .MACRO SET_DIGIT
+                                 	LDI R28, (1<<(@0+1))
+                                 	OUT Digits_P, R28
+                                 	RCALL DigitTo7segCode
+                                 	OUT Segments_P, R16
+                                 	RCALL DelayInMs
+                                 .ENDMACRO
+                                 
+                                 .equ Digits_P = PORTB
+                                 .equ Segments_P = PORTD
+                                 .equ Digit_0 = 0
+                                 .equ Digit_1 = 1
+                                 .equ Digit_2 = 2
+                                 .equ Digit_3 = 3
+                                 .equ Digit_4 = 4
+                                 .equ Digit_5 = 5
+                                 .equ Digit_6 = 6
+                                 .equ Digit_7 = 7
+                                 .equ Digit_8 = 8
+                                 .equ Digit_9 = 9
                                  
                                  
+000000 ef4f                      SER R20
+000001 bb41                      OUT DDRD, R20
+000002 bb47                      OUT DDRB, R20
+000003 e02a                      LDI R18, 10
+000004 e033                      LDI R19, 3
+                                 
+                                 MainLoop:
+000005 2700                      CLR R16
+000006 2711                      CLR R17
+                                 Counter:
+000007 e0c2
+000008 bbc8
+000009 d023
+00000a bb02
+00000b d008                      	SET_DIGIT 0
+00000c 2f01                      	MOV R16, R17
+00000d 9513                      	INC R17
+00000e 1702                      	CP R16, R18
+00000f f7b9                      BRNE Counter
+000010 9513                      INC R17
+000011 1713                      CP R17, R19
+000012 f7a1                      BRNE Counter
+000013 cff1                      RJMP MainLoop
+                                 
+                                 DelayInMs:
+000014 938f                      	PUSH R24
+000015 939f                      	PUSH R25
+000016 930f                      	PUSH R16
+000017 931f                      	PUSH R17
+000018 e604
+000019 e010                      	LOAD_CONST R16, R17, 100
+00001a 2f91                      	MOV R25, R17
+00001b 2f80                      	MOV R24, R16
+00001c 911f                      	POP R17
+00001d 910f                      	POP R16
+                                 	Ms:
+00001e d005                      		RCALL DelayOneMs
+00001f 9701                      		SBIW R25:R24, 1
+000020 f7e9                      	BRNE Ms
+000021 919f                      	POP R25
+000022 918f                      	POP R24
+000023 9508                      RET
+                                 
+                                 DelayOneMs:
+000024 939f                      	PUSH R25
+000025 938f                      	PUSH R24
+000026 ed80
+000027 e097                      	LOAD_CONST R24, R25, 2000
+                                 	OneMs:
+000028 9701                      		SBIW R25:R24, 1
+000029 f7f1                      	BRNE OneMs
+00002a 918f                      	POP R24
+00002b 919f                      	POP R25
+00002c 9508                      RET
+                                 
+                                 DigitTo7segCode:
+00002d 93ef                      	PUSH R30
+00002e e6e6                      	LDI R30, LOW(seg<<1)
+00002f 1fe0                      	ADC R30, R16
+000030 9104                      	LPM R16, Z
+000031 91ef                      	POP R30
+000032 9508                      RET
+                                 
+000033 063f
+000034 4f5b
+000035 6d66
+000036 077d
 
 
 RESOURCE USE INFORMATION
@@ -698,38 +776,38 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATtiny2313" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   1 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   0 r17:   0 r18:   0 r19:   0 r20:   2 
-r21:   2 r22:   2 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
-r29:   0 r30:   0 r31:   0 
-Registers used: 3 out of 35 (8.6%)
+r13:   0 r14:   0 r15:   0 r16:  10 r17:   9 r18:   2 r19:   2 r20:   3 
+r21:   0 r22:   0 r23:   0 r24:   8 r25:   8 r26:   0 r27:   0 r28:   2 
+r29:   0 r30:   4 r31:   0 
+Registers used: 10 out of 35 (28.6%)
 
 "ATtiny2313" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   1 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   4 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 
-clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
-clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   0 
-cpse  :   0 dec   :   3 eor   :   0 icall :   0 ijmp  :   0 in    :   0 
-inc   :   0 ld    :   0 ldd   :   0 ldi   :   3 lds   :   0 lpm   :   0 
-lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 neg   :   0 nop   :   3 
-or    :   0 ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   0 
-ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 ror   :   0 sbc   :   0 
-sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 
+clh   :   0 cli   :   0 cln   :   0 clr   :   2 cls   :   0 clt   :   0 
+clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 cpi   :   0 
+cpse  :   0 dec   :   0 eor   :   0 icall :   0 ijmp  :   0 in    :   0 
+inc   :   2 ld    :   0 ldd   :   0 ldi   :   8 lds   :   0 lpm   :   2 
+lsl   :   0 lsr   :   0 mov   :   3 movw  :   0 neg   :   0 nop   :   0 
+or    :   0 ori   :   0 out   :   4 pop   :   7 push  :   7 rcall :   3 
+ret   :   3 reti  :   0 rjmp  :   1 rol   :   0 ror   :   0 sbc   :   0 
+sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   2 sbr   :   0 
 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 sei   :   0 sen   :   0 
-ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 
+ser   :   1 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 
 spm   :   0 st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   0 
 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 4 out of 105 (3.8%)
+Instructions used: 16 out of 105 (15.2%)
 
 "ATtiny2313" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000018     24      0     24    2048   1.2%
+[.cseg] 0x000000 0x000070    102     10    112    2048   5.5%
 [.dseg] 0x000060 0x000060      0      0      0     128   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     128   0.0%
 

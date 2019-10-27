@@ -15,7 +15,7 @@
     <Name>AVR_METER</Name>
     <RootNamespace>AVR_METER</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <EntryFile>$(MSBuildProjectDirectory)\17b.asm</EntryFile>
+    <EntryFile>$(MSBuildProjectDirectory)\41.asm</EntryFile>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
@@ -92,6 +92,9 @@
     <Compile Include="16.asm">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="16_v2.asm">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="17.asm">
       <SubType>Code</SubType>
     </Compile>
@@ -101,10 +104,112 @@
     <Compile Include="18.asm">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="18_zaj.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="19.asm">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="2.asm">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="20.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="21.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="22.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="23.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="24.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="25.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="26.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="27a.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="27b.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="28.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="29.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="30a.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="30b.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="31.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="34.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="35.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="36.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="37.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="38.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="39.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="39b.asm">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="4.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="40.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="39B_properly.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="41.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="42.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="43.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="44.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="45.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="46.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="47.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="48.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="49.asm">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="5.asm">

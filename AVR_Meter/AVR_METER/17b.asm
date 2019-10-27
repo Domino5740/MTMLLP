@@ -1,4 +1,4 @@
-LDI R22, 8
+LDI R22, 1
 Loop3:
 	LDI R20,11
 	Loop:

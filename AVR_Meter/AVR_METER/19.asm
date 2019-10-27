@@ -1,0 +1,22 @@
+/*LDI R20, $FF
+LDI R22, 1
+Loop1:
+	LDI R23, 35
+	LDI R21, $AA
+	Loop2:
+			NOP
+			SBC R21, R23
+	BRCC Loop2
+	SBC R20, R24
+	BRCC Loop2
+	DEC R22
+BRNE Loop1
+NOP
+*/
+
+LDI R25, $7
+LDI R24, $D0
+SUBB:
+	SBIW R25:R24, 1
+BRNE SUBB
+NOP

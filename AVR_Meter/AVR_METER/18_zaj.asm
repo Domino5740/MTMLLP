@@ -1,15 +1,13 @@
 LDI R22, 1
-LDI R23, 200
 Loop1:
-	LDI R20, 0
-	LDI R21, 0
+	LDI R23, 35
+	LDI R21, 85
 	Loop2:
 			NOP
 			ADC R21, R23
-			ADC R20, R20
+	BRCC Loop2
+	ADC R20, R24
 	BRCC Loop2
 	DEC R22
 BRNE Loop1
-
-
-;( (3+(5*R21))*R20 +3)*R22
+NOP

@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.7</VERSION>
  <DEVICE>"ATtiny2313"</DEVICE>
- <WORKING_DIR>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn2313def.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\Debug\AVR_METER.obj</FILE>
+  <FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\Debug\AVR_METER.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>AVR_METER.hex</FILE>
@@ -22,8 +22,13 @@
   <FILE>AVR_METER.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <Loop3><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm</FILE><LINE>2</LINE></Loop3>
-  <Loop><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm</FILE><LINE>4</LINE></Loop>
-  <Loop2><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm</FILE><LINE>6</LINE></Loop2>
+  <MainLoop><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>34</LINE></MainLoop>
+  <Counter><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>37</LINE></Counter>
+  <DigitTo7segCode><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>77</LINE></DigitTo7segCode>
+  <DelayInMs><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>48</LINE></DelayInMs>
+  <Ms><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>58</LINE></Ms>
+  <DelayOneMs><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>66</LINE></DelayOneMs>
+  <OneMs><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>70</LINE></OneMs>
+  <seg><FILE>C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm</FILE><LINE>85</LINE></seg>
  </LABELS>
 </ASSEMBLER_INFO>

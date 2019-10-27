@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\LLP\AVR_Meter\AVR_METER\17b.asm Wed Oct 09 12:15:36 2019
+AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\41.asm Sun Oct 27 16:18:39 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -448,6 +448,23 @@ EQU  USI_OVFaddr  00000010
 EQU  ERDYaddr     00000011
 EQU  WDTaddr      00000012
 EQU  INT_VECTORS_SIZE 00000013
-CSEG Loop3        00000001
-CSEG Loop         00000002
-CSEG Loop2        00000003
+EQU  Digits_P     00000018
+EQU  Segments_P   00000012
+EQU  Digit_0      00000000
+EQU  Digit_1      00000001
+EQU  Digit_2      00000002
+EQU  Digit_3      00000003
+EQU  Digit_4      00000004
+EQU  Digit_5      00000005
+EQU  Digit_6      00000006
+EQU  Digit_7      00000007
+EQU  Digit_8      00000008
+EQU  Digit_9      00000009
+CSEG MainLoop     00000005
+CSEG Counter      00000007
+CSEG DigitTo7segCode 0000002d
+CSEG DelayInMs    00000014
+CSEG Ms           0000001e
+CSEG DelayOneMs   00000024
+CSEG OneMs        00000028
+CSEG seg          00000033
