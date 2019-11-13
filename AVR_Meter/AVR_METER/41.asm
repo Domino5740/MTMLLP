@@ -6,9 +6,11 @@
 .MACRO SET_DIGIT
 	LDI R28, (1<<(@0+1))
 	OUT Digits_P, R28
+	PUSH R16
 	RCALL DigitTo7segCode
 	OUT Segments_P, R16
-	RCALL DelayInMs
+	POP R16
+	RCALL DelayOneMs
 .ENDMACRO
 
 .equ Digits_P = PORTB
@@ -23,26 +25,56 @@
 .equ Digit_7 = 7
 .equ Digit_8 = 8
 .equ Digit_9 = 9
+.def Counter_3 = R16
+.def Counter_2 = R17
+.def Counter_1 = R18
+.def Counter_0 = R19
+.def Loop_Con = R20
 
 
 SER R20
 OUT DDRD, R20
 OUT DDRB, R20
-LDI R18, 10
-LDI R19, 3
+LDI Loop_Con, 10
 
 MainLoop:
-CLR R16
-CLR R17
-Counter:
-	SET_DIGIT 0
-	MOV R16, R17
-	INC R17
-	CP R16, R18
-BRNE Counter
-INC R17
-CP R17, R19
-BRNE Counter
+SET_DIGIT 3
+PUSH Counter_3
+MOV Counter_3, Counter_2
+SET_DIGIT 2
+MOV Counter_3, Counter_1
+SET_DIGIT 1
+MOV Counter_3, Counter_0
+SET_DIGIT 0
+POP Counter_3
+
+INC Counter_3
+RCALL DelayInMs
+CP Counter_3, Loop_Con
+BRNE MainLoop
+INC Counter_2
+CLR Counter_3
+CP Counter_2, Loop_Con
+BRNE MainLoop
+
+CLR Counter_2
+INC Counter_1
+CLR Counter_3
+RCALL DelayInMs
+CP Counter_1, Loop_Con
+BRNE MainLoop
+
+CLR Counter_1
+INC Counter_0
+CLR Counter_3
+RCALL DelayInMs
+CP Counter_0, Loop_Con
+BRNE MainLoop
+
+CLR Counter_3
+CLR Counter_2
+CLR Counter_1
+CLR Counter_0
 RJMP MainLoop
 
 DelayInMs:
@@ -50,7 +82,7 @@ DelayInMs:
 	PUSH R25
 	PUSH R16
 	PUSH R17
-	LOAD_CONST R16, R17, 100
+	LOAD_CONST R16, R17, 5
 	MOV R25, R17
 	MOV R24, R16
 	POP R17
@@ -77,7 +109,7 @@ RET
 DigitTo7segCode:
 	PUSH R30
 	LDI R30, LOW(seg<<1)
-	ADC R30, R16
+	ADD R30, R16
 	LPM R16, Z
 	POP R30
 RET

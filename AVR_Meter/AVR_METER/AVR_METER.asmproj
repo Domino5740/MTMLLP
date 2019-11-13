@@ -6,7 +6,7 @@
     <ToolchainName>com.Atmel.AVRAssembler</ToolchainName>
     <ProjectGuid>59B1D629-9DCC-43ed-A0FD-8AB0E4D622AB</ProjectGuid>
     <avrdeviceseries>none</avrdeviceseries>
-    <avrdevice>ATtiny2313</avrdevice>
+    <avrdevice>ATtiny2313A</avrdevice>
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.obj</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
@@ -15,7 +15,7 @@
     <Name>AVR_METER</Name>
     <RootNamespace>AVR_METER</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
-    <EntryFile>$(MSBuildProjectDirectory)\41.asm</EntryFile>
+    <EntryFile>$(MSBuildProjectDirectory)\kolo kolunio.asm</EntryFile>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
@@ -32,15 +32,18 @@
     <avrtoolserialnumber />
     <avrdeviceexpectedsignature>0x1E910A</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_simulator>
-      <ToolOptions xmlns="">
+      <ToolOptions>
         <InterfaceProperties>
         </InterfaceProperties>
+        <InterfaceName>
+        </InterfaceName>
       </ToolOptions>
-      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
-      <ToolNumber xmlns="">
+      <ToolType>com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolNumber>
       </ToolNumber>
-      <ToolName xmlns="">Simulator</ToolName>
+      <ToolName>Simulator</ToolName>
     </com_atmel_avrdbg_tool_simulator>
+    <avrtoolinterface />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
@@ -50,7 +53,7 @@
             <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.3.229\avrasm\inc</Value>
           </ListValues>
         </avrasm.assembler.general.AdditionalIncludeDirectories>
-        <avrasm.assembler.general.IncludeFile>tn2313def.inc</avrasm.assembler.general.IncludeFile>
+        <avrasm.assembler.general.IncludeFile>tn2313adef.inc</avrasm.assembler.general.IncludeFile>
       </AvrAssembler>
     </ToolchainSettings>
     <OutputType>Executable</OutputType>
@@ -63,7 +66,7 @@
             <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.3.229\avrasm\inc</Value>
           </ListValues>
         </avrasm.assembler.general.AdditionalIncludeDirectories>
-        <avrasm.assembler.general.IncludeFile>tn2313def.inc</avrasm.assembler.general.IncludeFile>
+        <avrasm.assembler.general.IncludeFile>tn2313adef.inc</avrasm.assembler.general.IncludeFile>
       </AvrAssembler>
     </ToolchainSettings>
   </PropertyGroup>
@@ -209,6 +212,9 @@
     <Compile Include="48.asm">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="48mati.asm">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="49.asm">
       <SubType>Code</SubType>
     </Compile>
@@ -222,6 +228,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="8.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="kolo kolunio.asm">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="reference.asm">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

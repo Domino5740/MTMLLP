@@ -6,9 +6,11 @@
 .MACRO SET_DIGIT
 	LDI R28, (1<<(@0+1))
 	OUT Digits_P, R28
+	PUSH R16
 	LDI R16, Digit_@0
 	RCALL DigitTo7segCode
 	OUT Segments_P, R16
+	POP R16
 	RCALL DelayInMs
 .ENDMACRO
 
@@ -29,6 +31,7 @@
 SER R20
 OUT DDRD, R20
 OUT DDRB, R20
+LDI R20, 10
 
 MainLoop:
 SET_DIGIT 0
@@ -69,7 +72,7 @@ RET
 DigitTo7segCode:
 	PUSH R30
 	LDI R30, LOW(seg<<1)
-	ADC R30, R16
+	ADD R30, R16
 	LPM R16, Z
 	POP R30
 RET
