@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\Rejmi\Documents\STUDIA\S3\MTMLLP\AVR_Meter\AVR_METER\kolo kolunio.asm Sat Nov 23 10:34:55 2019
+AVRASM ver. 2.2.7  C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm Tue Dec 03 11:49:58 2019
 
 
 EQU  SIGNATURE_000 0000001e
@@ -432,10 +432,10 @@ EQU  SPIEN        00000005
 EQU  DWEN         00000006
 EQU  RSTDISBL     00000007
 EQU  SELFPRGEN    00000000
-DEF  XH           r17
-DEF  XL           r16
-DEF  YH           r19
-DEF  YL           r18
+DEF  XH           r27
+DEF  XL           r26
+DEF  YH           r29
+DEF  YL           r28
 DEF  ZH           r31
 DEF  ZL           r30
 EQU  FLASHEND     000003ff
@@ -478,31 +478,21 @@ EQU  WDTaddr      00000012
 EQU  PCIAaddr     00000013
 EQU  PCIDaddr     00000014
 EQU  INT_VECTORS_SIZE 00000015
-EQU  Digits_P     00000018
-EQU  Segments_P   00000012
-DEF  RL           r16
-DEF  RH           r17
-DEF  QL           r18
-DEF  QH           r19
-DEF  QCtrL        r24
-DEF  QCtrH        r25
-DEF  Dig0         r20
-DEF  Dig1         r21
-DEF  Dig2         r22
-DEF  Dig3         r23
-DEF  PulseEdgeCtrL r28
-DEF  PulseEdgeCtrH r29
-CSEG _main        0000001e
-CSEG _timer_ISR   0000000c
-CSEG _ext_ISR     00000018
-CSEG NumberToDigits 0000007d
-CSEG MainLoop     00000031
-CSEG DigitTo7SegCode 00000062
-CSEG DelayOneMs   00000059
-CSEG DelayInMs    0000004b
-CSEG Delay        00000051
-CSEG OneMs        0000005d
-CSEG seg          00000068
-CSEG Divide       0000006d
-CSEG Compare      00000071
-CSEG Exit         00000078
+EQU  DigitsPort   00000018
+EQU  SegmentsPort 00000012
+DEF  ThreadA_LSB  r16
+DEF  ThreadA_MSB  r17
+DEF  ThreadB_LSB  r18
+DEF  ThreadB_MSB  r19
+DEF  CurrentThread r20
+CSEG _main        00000018
+CSEG _Timer_ISR   00000005
+CSEG GoToThreadA  00000011
+CSEG GoToThreadB  0000000a
+EQU  TimerPeriodConst 00000064
+CSEG ThreadA      00000030
+CSEG ThreadB      0000003b
+CSEG L2A          00000032
+CSEG L1A          00000034
+CSEG L2B          0000003d
+CSEG L1B          0000003f

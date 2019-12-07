@@ -1,0 +1,36 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATtiny2313A"</DEVICE>
+ <WORKING_DIR>C:\Users\Rejmi\Desktop\kolo2\kolo2\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.3.229\avrasm\inc\tn2313adef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\Debug\kolo2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>kolo2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>kolo2.map</FILE>
+  <FILE>kolo2.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <_main><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>43</LINE></_main>
+  <_Timer_ISR><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>20</LINE></_Timer_ISR>
+  <GoToThreadA><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>34</LINE></GoToThreadA>
+  <GoToThreadB><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>26</LINE></GoToThreadB>
+  <ThreadA><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>79</LINE></ThreadA>
+  <ThreadB><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>92</LINE></ThreadB>
+  <L2A><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>81</LINE></L2A>
+  <L1A><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>83</LINE></L1A>
+  <L2B><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>94</LINE></L2B>
+  <L1B><FILE>C:\Users\Rejmi\Desktop\kolo2\kolo2\main.asm</FILE><LINE>96</LINE></L1B>
+ </LABELS>
+</ASSEMBLER_INFO>
